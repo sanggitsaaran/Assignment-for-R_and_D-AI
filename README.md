@@ -12,9 +12,9 @@ Finding $\theta$, $M$, and $X$ from 1500 unordered points on a rotated parametri
 | $X$ | **55.0** |
 | $M$ | **0.030** |
 
-### Desmos equation (submission format)
+### Desmos equation
 
-Paste into [https://www.desmos.com/calculator/rfj91yrxob](https://www.desmos.com/calculator/rfj91yrxob):
+Check the graph at [https://www.desmos.com/calculator/d48qtlslnr](https://www.desmos.com/calculator/d48qtlslnr):
 
 ```
 \left(t*\cos(0.5236)-e^{0.03\left|t\right|}\cdot\sin(0.3t)\sin(0.5236)+55,\ 42+t*\sin(0.5236)+e^{0.03\left|t\right|}\cdot\sin(0.3t)\cos(0.5236)\right)
