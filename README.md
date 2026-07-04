@@ -28,14 +28,9 @@ Check the graph at [https://www.desmos.com/calculator/d48qtlslnr](https://www.de
 
 Each point in the CSV satisfies:
 
-$$
-\begin{pmatrix} x \\ y \end{pmatrix}
-=
-\begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}
-\begin{pmatrix} t \\ e^{M|t|}\sin(0.3t) \end{pmatrix}
-+
-\begin{pmatrix} X \\ 42 \end{pmatrix}
-$$
+$$x = t\cos\theta - e^{M|t|}\sin(0.3t)\sin\theta + X$$
+
+$$y = 42 + t\sin\theta + e^{M|t|}\sin(0.3t)\cos\theta$$
 
 for some unknown $t_i \in (6, 60)$. The rows are **not ordered** by $t$.
 
