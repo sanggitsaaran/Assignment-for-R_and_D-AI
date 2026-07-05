@@ -54,6 +54,24 @@ So I used brute force to confirm the neighbourhood, then built a proper pipeline
 
 ---
 
+## Things I tried before getting there
+
+**Line-fitting for θ and X**
+
+My first clean idea was: if you ignore the sinusoidal oscillation, the curve's "spine" is just a straight line rotated by $\theta$ and passing through $(X, 42)$. So I fit a line $y = mx + c$ to the 1500 points using OLS, read off $\theta = \arctan(m)$, and solved for $X$ from the intercept.
+
+The slope part was fine — gave $\theta \approx 27.8°$, close enough. But extracting $X$ from the intercept was the problem. The intercept tells you where the line hits $x = 0$, which corresponds to $t = 0$ in the original curve. Our data only covers $t \in (6, 60)$, so $t = 0$ is completely outside the observed range. Extrapolating that far out amplified any small angle error into a large $X$ error — I got $X \approx 131$, well outside the valid range of $(0, 100)$.
+
+The fix was obvious in hindsight: instead of solving at $t = 0$, use a point inside the actual data range (like the centroid at $t \approx 33$). But by the time I worked this out I had already switched to the unrotation approach, which doesn't have this extrapolation problem at all.
+
+**Zero-crossing check (as a visual validation)**
+
+As a sanity check on the final answer, I also looked at where $\sin(0.3t) = 0$ — i.e. $t = n\pi/0.3$. At those points $v = 0$ regardless of $M$, so the curve must sit exactly on its own centerline with no sinusoidal contribution. Overlaying these crossing points on the scatter confirmed they line up perfectly on the rotated axis at $\theta = 30°$, $X = 55$ — a clean independent check that needed no fitting at all.
+
+---
+
+
+
 ## What I did (refined approach)
 
 The main challenge is that each point has its own hidden $t_i$ — you can't just run a standard regression.
